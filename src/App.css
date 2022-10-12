@@ -28,10 +28,33 @@
   color: #61dafb;
 }
 
+.wrapper {
+  width: 100%;
+  height: 60vh;
+  position: relative;
+}
+
+.content {
+  /* Center vertically and horizontally */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.btn-controls>button {
+  margin-right: 5px;
+}
+
+.text-center {
+  text-align: center;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

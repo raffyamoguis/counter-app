@@ -1,23 +1,38 @@
-import logo from './logo.svg';
+import { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
+  const [num, setNum] = useState(0);
+  const [isNumEven, setNumEven] = useState(true);
+
+  const incNum = () => {
+    setNum(num + 1);
+  }
+  const decNum = () => {
+    setNum(num - 1);
+  }
+
+  useEffect(() => {
+    const checknum = async () => {
+      if (num % 2 === 0) {
+        setNumEven(true);
+      } else {
+        setNumEven(false);
+      }
+    }
+    checknum();
+  }, [num]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="wrapper">
+      <div className='content'>
+        <h1 className='text-center'>{num}</h1>
+        <div className='btn-controls'>
+          <button onClick={() => incNum()}>Increment</button>
+          <button onClick={() => decNum()}>Decrement</button>
+        </div>
+        <h2 className='text-center'>{isNumEven ? 'Even' : 'Odd'}</h2>
+      </div>
     </div>
   );
 }
